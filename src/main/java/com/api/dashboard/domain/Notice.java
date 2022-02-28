@@ -26,20 +26,19 @@ public class Notice {
     private String writer;
 
     public boolean isShow(){
-        LocalDate now = LocalDate.now();
-        return isStart(now) && isNotEnd(now);
+        return isStart() && isNotEnd();
     }
 
-    private boolean isStart(LocalDate now){
-        return now.equals(startDate) || now.isAfter(startDate);
+    public boolean isStart(){
+        return LocalDate.now().equals(startDate) || LocalDate.now().isAfter(startDate);
     }
 
-    private boolean isEnd(LocalDate now){
-        return now.isAfter(endDate);
+    public boolean isEnd(){
+        return LocalDate.now().isAfter(endDate);
     }
 
-    private boolean isNotEnd(LocalDate now){
-        return !isEnd(now);
+    public boolean isNotEnd(){
+        return !isEnd();
     }
 
 

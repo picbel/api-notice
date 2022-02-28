@@ -18,7 +18,9 @@ public class NoticeRepositoryResolver implements ParameterResolver {
         return new NoticeRepository() {
             @Override
             public Notice save(Notice notice) {
-                return Notice.builder().id(1L).build();
+                return Notice.builder()
+                        .id(1L)
+                        .build();
             }
 
             @Override
@@ -27,8 +29,17 @@ public class NoticeRepositoryResolver implements ParameterResolver {
             }
 
             @Override
-            public boolean delete(Long noticeId) {
+            public boolean deleteById(Long noticeId) {
                 return true;
+            }
+
+            @Override
+            public Notice findById(Long noticeId) {
+                return Notice.builder()
+                        .id(1L)
+                        .title("공지사항 제목 1")
+                        .content("공지사항 내용 1")
+                        .build();
             }
 
 

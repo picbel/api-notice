@@ -8,5 +8,7 @@ public interface NoticeRepository {
 
     Notice update(Notice notice);
 
-    boolean delete(Long noticeId);
+    boolean deleteById(Long noticeId);
+
+    Notice findById(Long noticeId);
 }
