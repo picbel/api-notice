@@ -1,7 +1,9 @@
 package com.api.dashboard.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,16 +12,18 @@ import java.util.List;
 
 @Getter
 @Builder
-public class Dashboard {
-    Long id;
-    String title;
-    String content;
-    LocalDate startDate;
-    LocalDate endDate;
-    LocalDateTime createDate;
-    Integer viewCount;
-    List<String> attachments = new ArrayList<>(); // 첨부 파일
-    String writer;
+@AllArgsConstructor
+@NoArgsConstructor
+public class Notice {
+    private Long id;
+    private String title;
+    private String content;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private LocalDateTime createDate;
+    private Integer viewCount;
+    private List<String> attachmentsUrl = new ArrayList<>(); // 첨부 파일
+    private String writer;
 
     public boolean isShow(){
         LocalDate now = LocalDate.now();
