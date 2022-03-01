@@ -1,4 +1,4 @@
-package com.api.notice.model;
+package com.api.notice.controller.model;
 
 import com.api.notice.domain.AttachmentFile;
 import lombok.*;

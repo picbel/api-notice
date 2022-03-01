@@ -1,6 +1,6 @@
 package com.api.notice.controller;
 
-import com.api.notice.model.NoticeDTO;
+import com.api.notice.controller.model.NoticeDTO;
 import com.api.notice.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

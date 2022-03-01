@@ -1,7 +1,7 @@
 package com.api.notice.controller;
 
-import com.api.notice.model.AttachmentFileDTO;
-import com.api.notice.model.NoticeDTO;
+import com.api.notice.controller.model.AttachmentFileDTO;
+import com.api.notice.controller.model.NoticeDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.api.notice.service;
 
 import com.api.notice.domain.Notice;
-import com.api.notice.model.NoticeDTO;
+import com.api.notice.controller.model.NoticeDTO;
 
 public interface NoticeService {
 

@@ -2,7 +2,7 @@ package com.api.notice.service;
 
 import com.api.notice.domain.Notice;
 import com.api.notice.fixture.NoticeRepositoryResolver;
-import com.api.notice.model.NoticeDTO;
+import com.api.notice.controller.model.NoticeDTO;
 import com.api.notice.repository.notice.NoticeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
