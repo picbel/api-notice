@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Getter
@@ -49,7 +50,11 @@ public class NoticeDTO {
         this.endDate = notice.getEndDate();
         this.createDate = notice.getCreateDate();
         this.viewCount = notice.getViewCount();
-        this.attachmentFiles = notice.getAttachmentFiles().stream().map(AttachmentFileDTO::new).collect(Collectors.toList());
+        if (Objects.nonNull(notice.getAttachmentFiles())) {
+            this.attachmentFiles = notice.getAttachmentFiles().stream().map(AttachmentFileDTO::new).collect(Collectors.toList());
+        }else{
+            this.attachmentFiles = new ArrayList<>();
+        }
         this.writer = notice.getWriter();
     }
 

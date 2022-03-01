@@ -2,6 +2,7 @@ package com.api.dashboard.repository.notice;
 
 import com.api.dashboard.domain.AttachmentFile;
 import com.api.dashboard.domain.Notice;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -21,6 +22,7 @@ class NoticeRepositoryTest {
     @Autowired
     NoticeRepository noticeRepository;
 
+    @DisplayName("등록 테스트")
     @Test
     void save() {
         //given
@@ -47,6 +49,7 @@ class NoticeRepositoryTest {
 
     }
 
+    @DisplayName("수정 테스트")
     @Test
     void update() {
         //given
@@ -88,6 +91,7 @@ class NoticeRepositoryTest {
 
     }
 
+    @DisplayName("삭제 테스트")
     @Test
     void deleteById() {
         //given
@@ -109,6 +113,7 @@ class NoticeRepositoryTest {
         assertThat(b).isTrue();
     }
 
+    @DisplayName("조회 서비스 테스트")
     @Test
     void viewNotice() {
         //given

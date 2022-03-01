@@ -3,6 +3,7 @@ package com.api.dashboard.controller;
 import com.api.dashboard.model.AttachmentFileDTO;
 import com.api.dashboard.model.NoticeDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -31,6 +32,7 @@ class NoticeControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @DisplayName("등록 컨트롤러 테스트")
     @Test
     void create() throws Exception {
         List<AttachmentFileDTO> attachmentFiles = Arrays.asList(
@@ -58,6 +60,7 @@ class NoticeControllerTest {
 
     }
 
+    @DisplayName("등록 컨트롤러 테스트 유효성검사 실패")
     @Test
     void create_2() throws Exception {
         List<AttachmentFileDTO> attachmentFiles = Arrays.asList(
@@ -82,6 +85,7 @@ class NoticeControllerTest {
 
     }
 
+    @DisplayName("수정 컨트롤러 테스트")
     @Test
     void update() throws Exception {
         List<AttachmentFileDTO> attachmentFiles = Arrays.asList(
@@ -111,6 +115,7 @@ class NoticeControllerTest {
 
     }
 
+    @DisplayName("삭제 컨트롤러 테스트")
     @Test
     void deleteNotice() throws Exception {
 
@@ -124,6 +129,7 @@ class NoticeControllerTest {
 
     }
 
+    @DisplayName("조회 컨트롤러 테스트")
     @Test
     void view() throws Exception {
 
