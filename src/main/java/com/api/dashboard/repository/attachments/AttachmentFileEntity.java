@@ -1,6 +1,7 @@
 package com.api.dashboard.repository.attachments;
 
 import com.api.dashboard.domain.AttachmentFile;
+import com.api.dashboard.repository.BaseTimestamp;
 import com.api.dashboard.repository.notice.NoticeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +18,7 @@ import javax.persistence.*;
 @Table(name = "attachment_file")
 @Entity
 @DynamicUpdate
-public class AttachmentFileEntity {
+public class AttachmentFileEntity extends BaseTimestamp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

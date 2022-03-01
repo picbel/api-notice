@@ -36,8 +36,8 @@ class NoticeRepositoryImpl implements NoticeRepository{
     }
 
     @Override
-    public Integer viewNotice(Long noticeId) {
-        return null;
+    public void viewNotice(Long noticeId) {
+        noticeJpaRepository.viewUpdate(noticeId);
     }
 
     @Override

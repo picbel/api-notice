@@ -34,8 +34,8 @@ public class NoticeRepositoryResolver implements ParameterResolver {
             }
 
             @Override
-            public Integer viewNotice(Long noticeId) {
-                return null;
+            public void viewNotice(Long noticeId) {
+
             }
 
             @Override

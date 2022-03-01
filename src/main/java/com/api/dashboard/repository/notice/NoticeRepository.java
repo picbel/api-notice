@@ -10,7 +10,7 @@ public interface NoticeRepository {
 
     boolean deleteById(Long noticeId);
 
-    Integer viewNotice(Long noticeId);
+    void viewNotice(Long noticeId);
 
     Notice findById(Long noticeId);
 }

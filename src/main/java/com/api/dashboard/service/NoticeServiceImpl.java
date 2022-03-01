@@ -19,6 +19,7 @@ public class NoticeServiceImpl implements NoticeService{
 
     @Override
     public Notice register(NoticeDTO noticeDTO) {
+        noticeDTO.setViewCount(0);
         Notice notice = noticeDTO.toDomain(objectMapper);
         if (notice.isEnd()){
             String format = String.format("종료일을 현재 날짜보다 이후로 설정하여 주십시오. 입력시간 : '%s' , 현재시간 : '%s'", notice.getEndDate(), LocalDate.now());
@@ -39,6 +40,7 @@ public class NoticeServiceImpl implements NoticeService{
 
     @Override
     public Notice view(Long noticeId) {
+        noticeRepository.viewNotice(noticeId);
         return noticeRepository.findById(noticeId);
     }
 }

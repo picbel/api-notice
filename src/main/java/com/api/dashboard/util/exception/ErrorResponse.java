@@ -18,7 +18,6 @@ public class ErrorResponse {
     private final String detail;
 
 
-
     public static ResponseEntity<ErrorResponse> toResponseEntity(ErrorCode errorCode) {
         return ResponseEntity
                 .status(errorCode.getHttpStatus())
