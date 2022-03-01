@@ -13,6 +13,7 @@ import java.time.LocalDate;
 
 import static com.api.notice.fixture.ObjectMapperFixture.OBJECT_MAPPER;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @ExtendWith(NoticeRepositoryResolver.class)
 class NoticeServiceTest {
@@ -88,5 +89,15 @@ class NoticeServiceTest {
                 .extracting("id", "title", "content")
                 .containsExactly(1L, "공지사항 제목 1", "공지사항 내용 1");
 
+    }
+
+    @DisplayName("공지사항 조회 기간 만료")
+    @Test
+    void view_2() {
+        //given
+        Long viewId = 2L;
+
+        //when  //then
+        assertThatThrownBy(() -> noticeService.view(viewId)).hasMessageStartingWith("조회 가능 기간이 지난 공지사항입니다.");
     }
 }

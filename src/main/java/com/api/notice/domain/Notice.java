@@ -27,6 +27,10 @@ public class Notice {
         return isStart() && isNotEnd();
     }
 
+    public boolean isNotShow(){
+        return !isShow();
+    }
+
     public boolean isStart(){
         return LocalDate.now().equals(startDate) || LocalDate.now().isAfter(startDate);
     }

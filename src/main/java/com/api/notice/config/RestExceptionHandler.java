@@ -1,5 +1,6 @@
 package com.api.notice.config;
 
+import com.api.notice.util.exception.BusinessException;
 import com.api.notice.util.exception.ErrorResponse;
 import com.api.notice.util.exception.model.ErrorCode;
 import lombok.extern.log4j.Log4j2;
@@ -16,10 +17,10 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    protected ResponseEntity<ErrorResponse> illegalArgumentExceptionHandler(IllegalArgumentException e) {
-        log.error("IllegalArgumentException = {}",e.getMessage());
-        return ErrorResponse.toResponseEntity(ErrorCode.ILLEGAL_ARGUMENT,e.getMessage());
+    @ExceptionHandler(BusinessException.class)
+    protected ResponseEntity<ErrorResponse> businessExceptionHandler(BusinessException e) {
+        log.error("BusinessException = {}",e.getMessage());
+        return ErrorResponse.toResponseEntity(e.getErrorCode(),e.getErrorCode().getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

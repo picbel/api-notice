@@ -3,6 +3,8 @@ package com.api.notice.service;
 import com.api.notice.domain.Notice;
 import com.api.notice.model.NoticeDTO;
 import com.api.notice.repository.notice.NoticeRepository;
+import com.api.notice.util.exception.BusinessException;
+import com.api.notice.util.exception.model.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,7 +36,9 @@ public class NoticeServiceImpl implements NoticeService{
 
     @Override
     public Notice view(Long noticeId) {
+        Notice find = noticeRepository.findById(noticeId);
+        if(find.isNotShow()){throw new BusinessException(ErrorCode.INQUIRY_PERIOD_EXPIRED);}
         noticeRepository.viewNotice(noticeId);
-        return noticeRepository.findById(noticeId);
+        return find;
     }
 }

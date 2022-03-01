@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum ErrorCode {
     ILLEGAL_ARGUMENT(HttpStatus.BAD_REQUEST,"해당 요청에 문법적인 오류가 있습니다."),
-    METHOD_ARGUMENT_NOT_VALID(HttpStatus.BAD_REQUEST,"유효성 검사에서 실패하였습니다.");
+    METHOD_ARGUMENT_NOT_VALID(HttpStatus.BAD_REQUEST,"유효성 검사에서 실패하였습니다."),
+    INQUIRY_PERIOD_EXPIRED(HttpStatus.BAD_REQUEST,"조회 가능 기간이 지난 공지사항입니다.");
+
 
     private final HttpStatus httpStatus;
     private final String message;
