@@ -11,7 +11,9 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Getter
@@ -38,7 +40,7 @@ public class NoticeEntity extends BaseTimestamp {
     private Integer viewCount;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "noticeEntity", cascade = CascadeType.ALL)
-    private List<AttachmentFileEntity> attachmentFileEntities;
+    private List<AttachmentFileEntity> attachmentFileEntities = new ArrayList<>();
 
     private String writer;
 
@@ -49,9 +51,13 @@ public class NoticeEntity extends BaseTimestamp {
         this.startDate = notice.getStartDate();
         this.endDate = notice.getEndDate();
         this.viewCount = notice.getViewCount();
-        this.attachmentFileEntities = notice.getAttachmentFiles().stream()
-                .map(attachmentFile -> new AttachmentFileEntity(attachmentFile,this))
-                .collect(Collectors.toList());
+        if (Objects.nonNull(notice.getAttachmentFiles())) {
+            this.attachmentFileEntities = notice.getAttachmentFiles().stream()
+                    .map(attachmentFile -> new AttachmentFileEntity(attachmentFile, this))
+                    .collect(Collectors.toList());
+        }else{
+            this.attachmentFileEntities = new ArrayList<>();
+        }
         this.writer = notice.getWriter();
     }
 
@@ -67,6 +73,26 @@ public class NoticeEntity extends BaseTimestamp {
                         .map(AttachmentFileEntity::toDomain)
                         .collect(Collectors.toList())
                 )
+                .writer(writer)
                 .build();
+    }
+
+    public NoticeEntity update(Notice notice) {
+        this.id = notice.getId();
+        this.title = notice.getTitle();
+        this.content = notice.getContent();
+        this.startDate = notice.getStartDate();
+        this.endDate = notice.getEndDate();
+        this.viewCount = notice.getViewCount();
+        if (Objects.nonNull(notice.getAttachmentFiles())) {
+            this.attachmentFileEntities = notice.getAttachmentFiles().stream()
+                    .map(attachmentFile -> new AttachmentFileEntity(attachmentFile, this))
+                    .collect(Collectors.toList());
+        }else{
+            this.attachmentFileEntities = new ArrayList<>();
+        }
+        this.writer = notice.getWriter();
+
+        return this;
     }
 }

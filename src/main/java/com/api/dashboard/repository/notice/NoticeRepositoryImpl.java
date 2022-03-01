@@ -3,6 +3,7 @@ package com.api.dashboard.repository.notice;
 import com.api.dashboard.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
@@ -16,14 +17,22 @@ class NoticeRepositoryImpl implements NoticeRepository{
         return noticeJpaRepository.save(new NoticeEntity(notice)).toDomain();
     }
 
+    @Transactional
     @Override
     public Notice update(Notice notice) {
-        return null;
+        return noticeJpaRepository.findById(notice.getId()).orElseThrow()
+                .update(notice)
+                .toDomain();
     }
 
     @Override
     public boolean deleteById(Long noticeId) {
-        return false;
+        if (!noticeJpaRepository.existsById(noticeId)){
+            return false;
+        }else{
+            noticeJpaRepository.deleteById(noticeId);
+            return true;
+        }
     }
 
     @Override
@@ -33,6 +42,6 @@ class NoticeRepositoryImpl implements NoticeRepository{
 
     @Override
     public Notice findById(Long noticeId) {
-        return null;
+        return noticeJpaRepository.findById(noticeId).orElseThrow().toDomain();
     }
 }

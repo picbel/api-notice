@@ -1,9 +1,6 @@
 package com.api.dashboard.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Notice {
     private Long id;
     private String title;
@@ -22,7 +20,7 @@ public class Notice {
     private LocalDate endDate;
     private LocalDateTime createDate;
     private Integer viewCount;
-    private List<AttachmentFile> attachmentFiles = new ArrayList<>(); // 첨부 파일
+    private List<AttachmentFile> attachmentFiles = new ArrayList<>();
     private String writer;
 
     public boolean isShow(){
@@ -42,6 +40,4 @@ public class Notice {
     }
 
 
-    // 대시보드 - 대시보드 조회수 mapsid
-    // 첨부파일은 1대N 관계
 }
