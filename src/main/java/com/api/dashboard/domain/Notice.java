@@ -12,8 +12,8 @@ import java.util.List;
 
 @Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Notice {
     private Long id;
     private String title;
@@ -22,7 +22,7 @@ public class Notice {
     private LocalDate endDate;
     private LocalDateTime createDate;
     private Integer viewCount;
-    private List<String> attachmentsUrl = new ArrayList<>(); // 첨부 파일
+    private List<AttachmentFile> attachmentFiles = new ArrayList<>(); // 첨부 파일
     private String writer;
 
     public boolean isShow(){

@@ -1,7 +1,7 @@
 package com.api.dashboard.fixture;
 
 import com.api.dashboard.domain.Notice;
-import com.api.dashboard.repository.NoticeRepository;
+import com.api.dashboard.repository.notice.NoticeRepository;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
@@ -31,6 +31,11 @@ public class NoticeRepositoryResolver implements ParameterResolver {
             @Override
             public boolean deleteById(Long noticeId) {
                 return true;
+            }
+
+            @Override
+            public Integer viewNotice(Long noticeId) {
+                return null;
             }
 
             @Override

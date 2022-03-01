@@ -3,7 +3,7 @@ package com.api.dashboard.service;
 import com.api.dashboard.domain.Notice;
 import com.api.dashboard.fixture.NoticeRepositoryResolver;
 import com.api.dashboard.model.NoticeDTO;
-import com.api.dashboard.repository.NoticeRepository;
+import com.api.dashboard.repository.notice.NoticeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

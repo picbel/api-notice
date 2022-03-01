@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -22,7 +23,7 @@ public class NoticeDTO {
     private LocalDate endDate;
     private LocalDateTime createDate;
     private Integer viewCount;
-    private List<String> attachmentsUrl = new ArrayList<>(); // 첨부 파일
+    private List<AttachmentFileDTO> attachmentFiles = new ArrayList<>(); // 첨부 파일
     private String writer;
 
     public NoticeDTO(Notice notice){
@@ -33,7 +34,7 @@ public class NoticeDTO {
         this.endDate = notice.getEndDate();
         this.createDate = notice.getCreateDate();
         this.viewCount = notice.getViewCount();
-        this.attachmentsUrl = notice.getAttachmentsUrl();
+        this.attachmentFiles = notice.getAttachmentFiles().stream().map(AttachmentFileDTO::new).collect(Collectors.toList());
         this.writer = notice.getWriter();
     }
 

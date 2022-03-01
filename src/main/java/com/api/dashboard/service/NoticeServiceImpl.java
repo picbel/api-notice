@@ -2,15 +2,15 @@ package com.api.dashboard.service;
 
 import com.api.dashboard.domain.Notice;
 import com.api.dashboard.model.NoticeDTO;
-import com.api.dashboard.repository.NoticeRepository;
+import com.api.dashboard.repository.notice.NoticeRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class NoticeServiceImpl implements NoticeService{
 
     private final NoticeRepository noticeRepository;

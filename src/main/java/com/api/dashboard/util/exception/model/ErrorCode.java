@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
-    API_NOT_RESPONSE(HttpStatus.SERVICE_UNAVAILABLE,"API가 정상적으로 응답하지 않습니다. 잠시 후 다시 시도하여주세요.");
+    ILLEGAL_ARGUMENT(HttpStatus.BAD_REQUEST,"해당 요청에 문법적인 오류가 있습니다.");
 
     private final HttpStatus httpStatus;
     private final String message;
