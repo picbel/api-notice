@@ -60,17 +60,36 @@ class NoticeControllerTest {
 
     }
 
-    @DisplayName("등록 컨트롤러 테스트 유효성검사 실패")
+    @DisplayName("등록 컨트롤러 테스트 첨부파일 없음")
     @Test
     void create_2() throws Exception {
-        List<AttachmentFileDTO> attachmentFiles = Arrays.asList(
-                AttachmentFileDTO.builder().fileName("첨부파일 1").fileUrl("https://picbel.github.io/1").build(),
-                AttachmentFileDTO.builder().fileName("첨부파일 2").build()
-        );
+
+        NoticeDTO noticeDTO = NoticeDTO.builder()
+                .title("공지사항 제목 2")
+                .content("공지사항 내용 2")
+                .startDate(LocalDate.now().minusMonths(1))
+                .endDate(LocalDate.now().plusDays(1))
+                .build();
+
+        String body = objectMapper.writeValueAsString(noticeDTO);
+
+        mockMvc.perform(
+                post("/notice")
+                        .content(body)
+                        .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+
+    }
+
+    @DisplayName("등록 컨트롤러 테스트 유효성검사 실패")
+    @Test
+    void create_3() throws Exception {
 
         NoticeDTO noticeDTO = NoticeDTO.builder()
                 .title("공지사항 제목 1")
-                .attachmentFiles(attachmentFiles)
                 .build();
         String body = objectMapper.writeValueAsString(noticeDTO);
 

@@ -73,6 +73,7 @@ public class NoticeEntity extends BaseTimestamp {
                         .map(AttachmentFileEntity::toDomain)
                         .collect(Collectors.toList())
                 )
+                .createDateTime(getCreateDateTime())
                 .writer(writer)
                 .build();
     }

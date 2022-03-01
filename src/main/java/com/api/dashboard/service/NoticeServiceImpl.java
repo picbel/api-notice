@@ -7,8 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-
 @Service
 @RequiredArgsConstructor
 public class NoticeServiceImpl implements NoticeService{
@@ -21,10 +19,6 @@ public class NoticeServiceImpl implements NoticeService{
     public Notice register(NoticeDTO noticeDTO) {
         noticeDTO.setViewCount(0);
         Notice notice = noticeDTO.toDomain(objectMapper);
-        if (notice.isEnd()){
-            String format = String.format("종료일을 현재 날짜보다 이후로 설정하여 주십시오. 입력시간 : '%s' , 현재시간 : '%s'", notice.getEndDate(), LocalDate.now());
-            throw new IllegalArgumentException(format);
-        }
         return noticeRepository.save(notice);
     }
 

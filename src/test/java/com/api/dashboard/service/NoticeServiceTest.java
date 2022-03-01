@@ -13,7 +13,6 @@ import java.time.LocalDate;
 
 import static com.api.dashboard.fixture.ObjectMapperFixture.OBJECT_MAPPER;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @ExtendWith(NoticeRepositoryResolver.class)
 class NoticeServiceTest {
@@ -40,24 +39,6 @@ class NoticeServiceTest {
 
         //then
         assertThat(register.getId()).isNotNull();
-
-    }
-
-    @DisplayName("공지사항 등록 에러 / 종료날짜가 현재 날짜보다 이전")
-    @Test
-    void register_2() {
-        //given
-        NoticeDTO noticeDTO = NoticeDTO.builder()
-                .title("공지사항 제목 1")
-                .content("공지사항 내용 1")
-                .startDate(LocalDate.now().minusMonths(1))
-                .endDate(LocalDate.now().minusDays(1))
-                .build();
-
-        //when //then
-        assertThatThrownBy(() -> noticeService.register(noticeDTO))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith("종료일을 현재 날짜보다 이후로 설정하여 주십시오.");
 
     }
 

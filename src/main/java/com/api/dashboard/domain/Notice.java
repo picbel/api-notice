@@ -18,7 +18,7 @@ public class Notice {
     private String content;
     private LocalDate startDate;
     private LocalDate endDate;
-    private LocalDateTime createDate;
+    private LocalDateTime createDateTime;
     private Integer viewCount;
     private List<AttachmentFile> attachmentFiles = new ArrayList<>();
     private String writer;

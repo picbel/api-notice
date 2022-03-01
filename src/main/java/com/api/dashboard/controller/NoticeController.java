@@ -45,11 +45,7 @@ public class NoticeController {
     public ResponseEntity<?> view(
             @PathVariable Long id
     ){
-
         return new ResponseEntity<>(new NoticeDTO(noticeService.view(id)), HttpStatus.OK);
     }
-
-
-
 
 }

@@ -35,7 +35,8 @@ public class NoticeDTO {
     @Future(message = "종료 날짜가 현재보다 이전입니다.")
     private LocalDate endDate;
 
-    private LocalDateTime createDate;
+    private LocalDateTime createDateTime;
+
     private Integer viewCount;
 
     @Valid
@@ -48,7 +49,7 @@ public class NoticeDTO {
         this.content = notice.getContent();
         this.startDate = notice.getStartDate();
         this.endDate = notice.getEndDate();
-        this.createDate = notice.getCreateDate();
+        this.createDateTime = notice.getCreateDateTime();
         this.viewCount = notice.getViewCount();
         if (Objects.nonNull(notice.getAttachmentFiles())) {
             this.attachmentFiles = notice.getAttachmentFiles().stream().map(AttachmentFileDTO::new).collect(Collectors.toList());
